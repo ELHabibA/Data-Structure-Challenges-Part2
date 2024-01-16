@@ -14,12 +14,11 @@ int main() {
 
 	cout << v.get_size() << " " << v.back() << endl;
 
-	v.insert(5, 100);
 
+	cout << v.find_transposition(3) << endl;
 
 	v.print();
-	//cout << v.get_size() << " " << v.back() << endl;
-
+	
 
 
 	return 0;
