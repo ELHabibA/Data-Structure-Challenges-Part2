@@ -192,6 +192,14 @@ public:
 
 	void right_rotate(int times) {
 
+		times %= size;
+
+		while (times > 0)
+		{
+			right_rotate();
+			--times;
+		}
+
 	}
 
 	/*Problem #4: Deleting a position
