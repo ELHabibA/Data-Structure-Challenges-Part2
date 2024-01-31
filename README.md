@@ -1,11 +1,11 @@
 # Data Structure Challenges (Part2)
 
-The Data Structures Challenges Repository contains C++ solutions for various data structures challenges. Each challenge is encapsulated in its own class, providing a template for solving specific problems related to data structures. Each class is dedicated to constructing and implementing diverse data structures along with their associated operations. Additionally, it includes supplementary challenges aimed at deepening comprehension of data structure concepts and refining problem-solving skills.
+The Data Structures Challenges Repository contains C++ solutions for various data structure challenges. Each challenge is encapsulated in its own class, providing a template for solving specific problems related to data structures. Each class is dedicated to constructing and implementing diverse data structures along with their associated operations. Additionally, it includes supplementary challenges aimed at deepening comprehension of data structure concepts and refining problem-solving skills.
 
 ## Challenges Included:
 
 1. **Vector**
-    - File: `clsVector`
+    - File: `clsVector.h`
     - Challenges:
         - `right_rotate` - Shifts every element one step towards the right, with the rightmost element moving to the first index.
         - `left_rotate` - Rotates the entire array one step to the left, with the leftmost element wrapping around to the back of the array.
