@@ -1,5 +1,5 @@
 #include <iostream>
-#include "clsVector.h"
+#include "Vector/clsVector.h"
 #include "SinglyLinkedList/clsNode.h"
 
 using namespace std;
