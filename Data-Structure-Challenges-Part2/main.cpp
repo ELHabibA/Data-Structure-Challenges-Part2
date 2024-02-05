@@ -10,16 +10,29 @@ int main() {
 	
 	clsLinkedList<int>* List = new clsLinkedList<int>();
 
-  List->insert_end(6);
-	List->insert_end(10);
+  List->insert_end(1);
+	List->insert_end(2);
+	List->insert_end(3);
 	List->insert_end(8);
-	List->insert_end(15);
+	List->insert_end(5);
+
    
 	List->print();
+  
+ 	clsLinkedList<int>* other = new clsLinkedList<int>();
 
-  cout << List->search_improved_v2(8) << endl;
+	other->insert_end(1);
+	other->insert_end(2);
+	other->insert_end(5);
+	other->insert_end(8);
+	other->insert_end(5);
 
-		List->print();
+
+  other->print();
+
+
+	cout << List->is_same_without_length(* other) << endl;
+	
 
 	return 0;
 }

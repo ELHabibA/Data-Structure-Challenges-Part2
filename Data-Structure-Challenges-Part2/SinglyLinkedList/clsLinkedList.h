@@ -144,16 +144,29 @@ int search_improved_v2(T Value) {
 ● We implemented insert_end in the lecture
 ● We want to be able to insert front */
 
-void insert_front(){
-    
+void insert_front(T Value){
+    Node<T>* current = new Node<T>(Value);
 
+    current->next = head;
+
+    head = current;
+
+    length++;
+   
 }
 
 /*Problem #5: Delete front
 ● The opposite of insert front*/
 
 void delete_front(){
+    
+    Node<T>* tmp = head;
 
+    head = head->next;
+
+    delete tmp;
+
+    length--;
 }
 
 /*Problem #6: Get nth from back
@@ -163,7 +176,27 @@ void delete_front(){
 ● E..g. if list is 1 2 3 4 5 6
 ● get_nth_back(1) should point to node with value 6*/
 
-get_nth_back(int n){
+Node<T>* get_nth_back(int n){
+
+    if(n < 1 || n > length)
+       return NULL;
+
+    int pos = (length - n) +1;
+    int counter = 1;
+
+     Node<T>* tmp = head;
+
+     while (tmp != nullptr)
+     { 
+        tmp = tmp->next;
+        counter++;
+        if(counter == pos){
+           return tmp;
+        }
+     }
+
+     
+     return NULL;
 
 }
 
@@ -181,6 +214,56 @@ That tells us how many nodes so far
 ■ E.g. in each insert, length is increased
 ○ Another that doesn’t use it and don’t compute length*/
 
+bool is_same(const clsLinkedList &other){
+
+if((head->value != other.head->value) || (tail->value != other.tail->value) || (length != other.length))
+      return false;
+
+  Node<T>* tmp1 = head;
+  Node<T>* tmp2 = other.head;
+
+while (tmp1 != nullptr)
+{
+    if(tmp1->value != tmp2->value){
+        return false;
+    }
+
+    tmp1 = tmp1->next;
+    tmp2 = tmp2->next;
+}
+
+return true;
+
+}
+
+bool is_same_without_length(const clsLinkedList &other){
+
+if((head->value != other.head->value) || (tail->value != other.tail->value))
+      return false;
+
+  Node<T>* tmp1 = head;
+  Node<T>* tmp2 = other.head;
+
+while (tmp1->next->next != nullptr || tmp2->next->next != nullptr)
+{
+    if(tmp1->value != tmp2->value){
+        return false;
+    }
+    
+    tmp1 = tmp1->next;
+    tmp2 = tmp2->next;
+
+}
+
+if(tmp1 != tail && tmp2 != other.tail)
+     false;
+
+
+return true;
+
+}
+
+
 
 /*Problem #1: Destructor
 ● Our code used to create dynamic data, but never released
@@ -188,6 +271,12 @@ That tells us how many nodes so far
 ● Implement destructor: ~LinkedList()
 ● It should free all the created nodes*/
 ~clsLinkedList(){
+
+		while(head){
+			Node<T> * current = head->next;
+			delete head;
+			head = current;
+        }
 
 }
 
