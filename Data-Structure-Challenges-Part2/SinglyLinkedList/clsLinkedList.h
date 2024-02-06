@@ -43,6 +43,90 @@ void print(){
 
 }
 
+void delete_first_node(){
+
+if(head != nullptr){
+
+    Node<T>* new_Node = head->next;
+
+    delete head;
+    
+    head = new_Node;
+
+    if(head == nullptr)
+       tail = head;
+
+    --length;
+}
+}
+
+void delete_last_node(){
+
+    if(length == 1){
+        delete_first_node();
+        return;
+    }
+
+    Node<T>* new_Node = head;
+    
+    while (new_Node->next->next != nullptr)
+    {
+       new_Node = new_Node->next;
+    }
+
+    delete new_Node->next;
+
+    tail = new_Node;
+    
+    tail->next = nullptr;
+
+    --length;
+}
+
+void delete_nth(int n){
+    
+    if (n < 1 || n > length)
+    {
+       return;
+    }
+
+    if(n == length){
+
+      delete_last_node();
+
+      return;  
+
+    }
+
+    if(n == 1){
+
+      delete_first_node();
+
+      return;  
+
+    }
+    
+    int counter = 1;
+    Node<T>* new_Node = head;
+    
+    while (counter < --n)
+    {
+       new_Node = new_Node->next;
+       ++counter;
+    }
+    
+    Node<T>* tmp = new_Node->next->next;
+
+    delete new_Node->next;
+
+    new_Node->next = tmp;
+    
+    
+
+    --length;
+}
+
+
 /*Problem #1: Insert end
 ● Implemented insert_end function */
 
@@ -151,6 +235,12 @@ void insert_front(T Value){
 
     head = current;
 
+    if (length == 1)
+    {
+        tail = head;
+    }
+    
+
     length++;
    
 }
@@ -160,11 +250,11 @@ void insert_front(T Value){
 
 void delete_front(){
     
-    Node<T>* tmp = head;
+    Node<T>* tmp = head->next;
 
-    head = head->next;
+    delete head;
 
-    delete tmp;
+    head = tmp;
 
     length--;
 }
@@ -200,7 +290,7 @@ Node<T>* get_nth_back(int n){
 
 }
 
-/*Problem #5: Is Same list’s data?
+/*Problem #7: Is Same list’s data?
 ● Develop function to check if lists
 are data-equal:
 ○ Same length - each node and its
@@ -216,7 +306,7 @@ That tells us how many nodes so far
 
 bool is_same(const clsLinkedList &other){
 
-if((head->value != other.head->value) || (tail->value != other.tail->value) || (length != other.length))
+if((length != other.length))
       return false;
 
   Node<T>* tmp1 = head;
@@ -238,13 +328,10 @@ return true;
 
 bool is_same_without_length(const clsLinkedList &other){
 
-if((head->value != other.head->value) || (tail->value != other.tail->value))
-      return false;
-
   Node<T>* tmp1 = head;
   Node<T>* tmp2 = other.head;
 
-while (tmp1->next->next != nullptr || tmp2->next->next != nullptr)
+while (tmp1 != nullptr && tmp2 != nullptr)
 {
     if(tmp1->value != tmp2->value){
         return false;
@@ -255,21 +342,103 @@ while (tmp1->next->next != nullptr || tmp2->next->next != nullptr)
 
 }
 
-if(tmp1 != tail && tmp2 != other.tail)
-     false;
-
-
-return true;
+return !tmp1 && !tmp2;
 
 }
 
 
 
-/*Problem #1: Destructor
-● Our code used to create dynamic data, but never released
-● This creates a memory leak
-● Implement destructor: ~LinkedList()
-● It should free all the created nodes*/
+/*Problem #8: Delete with key
+● Given a list, delete the first node with the given key value
+● E.g. {1, 2, 3, 4, 2, 6}, key = 2 ⇒ {1, 3, 4, 2, 6}
+● void delete_node_with_key(int value)*/
+
+void delete_node_with_key(T Value){
+
+    if (head == nullptr) {
+        return;
+    }
+
+    if(head->value == Value){
+        delete_first_node();
+        return;
+    }
+
+    Node<T>* cur = head;
+    Node<T>* tmp; 
+
+    while (cur->next != nullptr)
+    {
+        if (cur->next->value == Value)
+        {
+            tmp = cur->next;
+            cur->next = cur->next->next;
+            
+            delete tmp;
+
+            --length;
+
+            return;
+        }
+        
+        cur = cur->next;
+    }
+
+    if (cur->value == Value)
+    {
+        delete_last_node();
+    }
+
+}
+
+/*Problem #9: Swap each pair vales
+● Given a list, swap each 2 consecutive values
+● E.g. {1, 2, 3, 4} ⇒ {2, 1, 4, 3}
+● E.g. {1, 2, 3, 4, 5} ⇒ {2, 1, 4, 3, 5}
+● void swap_pairs()*/
+
+void swap_pairs(){
+
+
+}
+
+/*Problem #10: Reverse list nodes
+● Given a list, reverse all its nodes (addresses)
+● E.g. {1, 2, 3, 4, 5} ⇒ {5, 4, 3, 2, 1}
+● void reverse()*/
+
+void reverse(){
+
+}
+
+/*Problem #11: Delete even positions
+● Given a list, delete all nodes at even positions (2, 4, 6, etc)
+● E.g. {1, 2, 3, 4, 10} ⇒ {1, 3, 10}
+● E.g. {1, 2, 3, 4, 5, 6} ⇒ {1, 3, 5}
+● Note: positions NOT values
+● void delete_even_positions()*/
+
+void delete_even_positions(){
+
+
+}
+
+/*Problem #12: Insert to be sorted
+● Implement: void insert_sorted(int value)
+● It will always insert the value in position so that list is sorted
+● Let’s insert values: 10 2 30 4 1
+● insert(10) ⇒ {10}
+● insert(2) ⇒ {2, 10}
+● insert(30) ⇒ {2, 10, 30}
+● insert(4) ⇒ {2, 4, 10, 30}
+● insert(1) ⇒ {1, 2, 4, 10, 30}*/
+
+void insert_sorted(int value){
+
+}
+
+
+
 ~clsLinkedList(){
 
 		while(head){
