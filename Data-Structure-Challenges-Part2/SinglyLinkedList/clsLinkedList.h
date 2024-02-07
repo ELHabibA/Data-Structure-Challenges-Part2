@@ -382,6 +382,12 @@ void delete_node_with_key(T Value){
         }
         
         cur = cur->next;
+
+        if (cur->next->next == nullptr)
+        {
+            tail = cur;
+        }
+        
     }
 
     if (cur->value == Value)
@@ -397,19 +403,44 @@ void delete_node_with_key(T Value){
 ● E.g. {1, 2, 3, 4, 5} ⇒ {2, 1, 4, 3, 5}
 ● void swap_pairs()*/
 
-void swap_pairs(){
+void swap_pairs() {		
 
+ Node<T>* cur = head;
 
+ while (cur && cur->next)
+ {
+      swap(cur->value, cur->next->value);
+      cur = cur->next->next;
+ }
+ 
 }
+
+  
 
 /*Problem #10: Reverse list nodes
 ● Given a list, reverse all its nodes (addresses)
 ● E.g. {1, 2, 3, 4, 5} ⇒ {5, 4, 3, 2, 1}
 ● void reverse()*/
 
-void reverse(){
+void reverse() {	
 
-}
+		if (length <= 1)
+			return;
+
+		tail = head;
+		Node<T> * prv = head;
+		head = head->next;
+		while (head) {
+			Node<T> * next = head->next;
+			head->next = prv;
+
+			prv = head;
+			head = next;
+		}
+		head = prv;
+		tail->next = nullptr;
+
+	}
 
 /*Problem #11: Delete even positions
 ● Given a list, delete all nodes at even positions (2, 4, 6, etc)
@@ -419,7 +450,39 @@ void reverse(){
 ● void delete_even_positions()*/
 
 void delete_even_positions(){
+    
+    if (length == 0)
+    {
+        return;
+    }
+    
+     while (head->value % 2 == 0)
+     {
+        delete_first_node();
+     }
+     
+     Node<T> * cur = head;
 
+     while (cur && cur->next)
+     {
+        if (cur->next->value % 2 == 0)
+        {
+             Node<T> * tmp = cur->next;
+
+             cur->next = cur->next->next;
+
+             delete tmp;
+
+             --length;
+        }
+        
+        cur = cur->next;
+     }
+
+     if (tail->value % 2 == 0)
+     {
+        delete_last_node();
+     }
 
 }
 

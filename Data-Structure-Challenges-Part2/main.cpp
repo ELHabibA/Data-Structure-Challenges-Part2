@@ -11,7 +11,7 @@ int main() {
 	clsLinkedList<int>* List = new clsLinkedList<int>();
 
   List->insert_end(1);
-	List->insert_end(7);
+	List->insert_end(6);
 	List->insert_end(3);
 	List->insert_end(8);
 
@@ -19,12 +19,17 @@ int main() {
 
 	cout << List->get_Tail() << endl;
 
-  List->delete_last_node();
+  List->delete_even_positions();
    
 	List->print();
 
 	cout << List->get_Tail() << endl;
-  
+
+	
+
+	return 0;
+}
+
  	/*clsLinkedList<int>* other = new clsLinkedList<int>();
 
 	other->insert_end(1);
@@ -35,8 +40,3 @@ int main() {
 
 
   other->print();*/
-
-	
-
-	return 0;
-}
