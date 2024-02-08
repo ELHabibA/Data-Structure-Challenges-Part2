@@ -18,7 +18,7 @@ The Data Structures Challenges Repository contains C++ solutions for various dat
     - Folder: `SinglyLinkedList`
     - Files: `clsLinkedList.h` & `clsNode.h`
     - Challenges:
-        ### Basic Operations
+        **Basic Operations**
         - `get_Length()`: Returns the length of the linked list.
         - `get_Head()`: Returns the value of the head node.
         - `get_Tail()`: Returns the value of the tail node.
@@ -28,7 +28,7 @@ The Data Structures Challenges Repository contains C++ solutions for various dat
         - `delete_nth(int n)`: Deletes the node at the specified position in the linked list.
         - `insert_end(T Value)`: Inserts a new node with the given value at the end of the linked list.
         
-        ### Search and Manipulation
+        **Search and Manipulation**
         - `get_nth(int pos)`: Returns the node at the specified position in the linked list.
         - `search(T Value)`: Returns the index of the first occurrence of the specified value in the linked list.
         - `search_improved_v2(T Value)`: Similar to `search`, but also swaps the found node with its previous node.
@@ -36,7 +36,7 @@ The Data Structures Challenges Repository contains C++ solutions for various dat
         - `delete_front()`: Deletes the first node in the linked list.
         - `get_nth_back(int n)`: Returns the node at the nth position from the end of the linked list.
         
-        ### List Manipulation
+        **List Manipulation**
         - `is_same(const clsLinkedList &other)`: Checks if two linked lists are data-equal.
         - `is_same_without_length(const clsLinkedList &other)`: Checks if two linked lists are data-equal without using the length variable.
         - `delete_node_with_key(T Value)`: Deletes the first occurrence of a node with the specified value.
@@ -45,7 +45,7 @@ The Data Structures Challenges Repository contains C++ solutions for various dat
         - `delete_even_positions()`: Deletes nodes at even positions in the linked list.
         - `insert_sorted(T Value)`: Inserts a new node with the given value in a sorted manner.
         
-        ### Additional Operations
+        **Additional Operations**
         - `Swap_head_and_tail()`: Swaps the head and tail nodes of the linked list.
         - `Left_Rotate()`: Left rotates the linked list by a specified number of steps.
         - `Remove_duplicates()`: Removes duplicate values from the linked list.
@@ -54,7 +54,7 @@ The Data Structures Challenges Repository contains C++ solutions for various dat
         - `Recursive_max()`: Finds the maximum value in the linked list using recursion.
         - `Arrange_odd_and_even_nodes()`: Arranges odd and even positioned nodes in the linked list.
         
-        ### Advanced Operations
+        **Advanced Operations**
         - `insert_alternate(clsLinkedList &another)`: Inserts values from another linked list in an alternating way.
         - `Adding_Huge_Numbers()`: Adds two linked lists representing huge numbers.
         - `Remove_all_repeated()`: Removes all nodes with repeated values from the sorted linked list.
