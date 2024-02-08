@@ -10,20 +10,22 @@ int main() {
 	
 	clsLinkedList<int>* List = new clsLinkedList<int>();
 
-  List->insert_end(1);
-	List->insert_end(6);
-	List->insert_end(3);
-	List->insert_end(8);
+  List->insert_sorted(1);
+	List->insert_sorted(2);
+	List->insert_sorted(30);
+	List->insert_sorted(4);
+	List->insert_sorted(7);
 
+	
 	List->print();
 
 	cout << List->get_Tail() << endl;
 
-  List->delete_even_positions();
+  //List->delete_even_positions();
    
-	List->print();
+	//List->print();
 
-	cout << List->get_Tail() << endl;
+	cout << List->get_Head() << endl;
 
 	
 

@@ -134,12 +134,22 @@ void insert_end(T Value) {
     Node<T>* new_Node = new Node<T>(Value); 
 
     if (head == nullptr && tail == nullptr) {
-        head = tail = new_Node;
+        head = new_Node;
+        tail = new_Node;
         new_Node->next = nullptr;
     } else {
-        tail->next = new_Node;
+        
+        Node<T> * cur = head;
+
+        while (cur->next != nullptr)
+        {
+            cur = cur->next;
+        }
+
+        cur->next = new_Node;
         new_Node->next = nullptr;
         tail = new_Node;
+        
     }
 
     length++;
@@ -449,42 +459,34 @@ void reverse() {
 ● Note: positions NOT values
 ● void delete_even_positions()*/
 
-void delete_even_positions(){
-    
-    if (length == 0)
-    {
+void delete_even_positions() {
+    if (length == 0) {
         return;
     }
-    
-     while (head->value % 2 == 0)
-     {
+
+    while (head && head->value % 2 == 0) {
         delete_first_node();
-     }
-     
-     Node<T> * cur = head;
+    }
 
-     while (cur && cur->next)
-     {
-        if (cur->next->value % 2 == 0)
-        {
-             Node<T> * tmp = cur->next;
+    Node<T> *cur = head;
 
-             cur->next = cur->next->next;
-
-             delete tmp;
-
-             --length;
-        }
+    while (cur->next && cur->next->next) {
+        if (cur->next->value % 2 == 0) {
+            Node<T> *tmp = cur->next;
+            cur->next = cur->next->next;
+            delete tmp;
+            --length;
+        } 
         
-        cur = cur->next;
-     }
+        cur = cur->next;  
+        
+    }
 
-     if (tail->value % 2 == 0)
-     {
+    if (tail && tail->value % 2 == 0) {
         delete_last_node();
-     }
-
+    }
 }
+
 
 /*Problem #12: Insert to be sorted
 ● Implement: void insert_sorted(int value)
@@ -496,11 +498,112 @@ void delete_even_positions(){
 ● insert(4) ⇒ {2, 4, 10, 30}
 ● insert(1) ⇒ {1, 2, 4, 10, 30}*/
 
-void insert_sorted(int value){
+void insert_sorted(T Value){
+
+    if (head == nullptr)
+    {
+        insert_front(Value);
+    }
+    else if (head->value >= Value)
+    {
+        insert_front(Value);
+    }
+    
+    else {
+
+     Node<T> * new_Node = new Node<T>(Value);
+     Node<T> * prev = head;
+     Node<T> * cur = head->next;
+
+    while (cur)
+    {
+        if (cur->value >= Value)
+        {
+            prev->next = new_Node;
+            new_Node->next = cur;
+            ++length;
+            return;
+        }
+        
+        prev = cur;
+        cur = cur->next;
+    }
+
+     insert_end(Value);
+    
+   } 
+    
+
+}
+
+/*Problem #13: Swap head and tail
+● Given a list, we would like swap the head node with the tail now
+○ NODES swap (addresses) not just values swap
+○ See the before and after before. Observe the addresses
+● Tip: Draw step by step your procedure. This will save a lot of your time
+● Make sure to print after the swap: once the values and also the addreses*/
+
+void Swap_head_and_tail(){
+
+
+}
+
+/*Problem #14: Left Rotate
+● Given a list, we would like left rotate it k steps (k up to 200000000) ○ Takes the first k elements and shift to back
+● void left_rotate(int k): Your code should be O(n) time
+● Below list rotated with k = 3 (nodes 6 10 8 shifted back)
+○ If k = 1 ⇒ {10, 8, 15, 6}
+○ If k = 2 ⇒ {8, 15, 6, 10}*/
+void Left_Rotate(){
+
+
+}
+
+/*Problem #15: Remove duplicates
+● Given list of numbers (not sorted), for any repeated number, remove all except the first
+● 1, 2, 1, 3, 2, 4, 3, 5, 2 ⇒ 1, 2, 3, 4, 5
+● 1, 2, 3, 4, 5 ⇒ 1, 2, 3, 4, 5
+● 1, 1, 1 ⇒ 1*/
+void Remove_duplicates(){
+
+
+}
+
+/*Problem #16: Remove last occurance
+● Given list of numbers (not sorted), and a key: remove the last occurrence for this key
+● 1, 2, 3 - key = 1 ⇒ 2, 3
+● 1, 2, 3, 4, 1 - key = 1 ⇒ 1, 2, 3, 4
+● 1, 2, 3, 1, 4 - key = 1 ⇒ 1, 2, 3, 4
+● 1, 2, 3, 4 - key = 7 ⇒ 1, 2, 3, 4*/
+
+void Remove_last_occurance(){
+
 
 }
 
 
+/*Problem #17: Move to back!
+● Given list of numbers (not sorted), and a key: move all the occurrence for this key to the end of the list
+● 1, 2, 3, 2, 4, 1 - key = 1 ⇒ 2 3 2 4 1 1
+● 1, 2, 3, 1, 2, 4, 1, 7, 1, 8, 1, 1 - key = 1 ⇒ 2 3 2 4 7 8 1 1 1 1 1 1*/
+
+void Move_to_back(){
+
+
+}
+
+
+/*Problem #18: Recursive max
+● Given a list, we would like to find the max value in it
+● Consider the following coding constraints
+○ You must use recursion
+○ Don’t create more than a function
+○ Function name: int max*/
+
+void Recursive_max(){
+
+
+}
 
 ~clsLinkedList(){
 
