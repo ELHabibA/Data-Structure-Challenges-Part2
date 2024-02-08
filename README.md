@@ -18,6 +18,7 @@ The Data Structures Challenges Repository contains C++ solutions for various dat
     - Folder: `SinglyLinkedList`
     - Files: `clsLinkedList.h` & `clsNode.h`
     - Challenges:
+      
         **Basic Operations**
         - `get_Length()`: Returns the length of the linked list.
         - `get_Head()`: Returns the value of the head node.
