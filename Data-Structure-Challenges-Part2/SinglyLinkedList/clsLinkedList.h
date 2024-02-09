@@ -532,8 +532,6 @@ void insert_sorted(T Value){
      insert_end(Value);
     
    } 
-    
-
 }
 
 /*Problem #13: Swap head and tail
@@ -544,6 +542,26 @@ void insert_sorted(T Value){
 ● Make sure to print after the swap: once the values and also the addreses*/
 
 void Swap_head_and_tail(){
+
+    if (length == 1 || head == nullptr)
+    {
+       return;
+    }
+
+    Node<T>* cur = head;
+    Node<T>* prev = head->next;
+
+    while (cur->next->next != nullptr)
+    {
+        cur = cur->next;
+    }
+    
+    cur->next->next = prev;
+    cur->next = head;
+    head->next = nullptr;
+
+    head = tail;
+    tail = cur->next;  
 
 
 }
@@ -628,7 +646,7 @@ void Arrange_odd_and_even_nodes(){
 ● {1, 2, 3} {4, 5, 6, 7, 8}⇒ 1 4 2 5 3 6, 7, 8
 ● {}, {1, 2, 3} ⇒ {1, 2, 3}*/
 
-void insert_alternate(LinkedList &another){
+void insert_alternate(clsLinkedList<T> &another){
 
 }
 

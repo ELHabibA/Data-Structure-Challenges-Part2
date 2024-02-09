@@ -19,15 +19,15 @@ int main() {
 	
 	List->print();
 
-	cout << List->get_Tail() << endl;
+	//cout << List->get_Tail() << endl;
 
-  //List->delete_even_positions();
+  List->Swap_head_and_tail();
    
-	//List->print();
+	List->print();
 
-	cout << List->get_Head() << endl;
+	//cout << List->get_Head() << endl;
 
-	
+	cout << List->get_Tail() << endl;
 
 	return 0;
 }
