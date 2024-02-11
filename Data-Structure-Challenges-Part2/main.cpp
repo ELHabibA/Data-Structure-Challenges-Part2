@@ -13,7 +13,7 @@ int main() {
   List->insert_sorted(1);
 	List->insert_sorted(2);
 	List->insert_sorted(30);
-	List->insert_sorted(4);
+	List->insert_sorted(7);
 	List->insert_sorted(7);
 
 	
@@ -21,13 +21,14 @@ int main() {
 
 	//cout << List->get_Tail() << endl;
 
-  List->Swap_head_and_tail();
+  List->Remove_duplicates();
    
 	List->print();
 
 	//cout << List->get_Head() << endl;
 
-	cout << List->get_Tail() << endl;
+//	cout << List->get_Tail() << endl;
+//	cout << List->get_Head() << endl;
 
 	return 0;
 }

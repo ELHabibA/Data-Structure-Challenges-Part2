@@ -567,12 +567,34 @@ void Swap_head_and_tail(){
 }
 
 /*Problem #14: Left Rotate
-● Given a list, we would like left rotate it k steps (k up to 200000000) ○ Takes the first k elements and shift to back
+● Given a list, we would like left rotate it k steps (k up to 200000000) 
+    ○ Takes the first k elements and shift to back
 ● void left_rotate(int k): Your code should be O(n) time
 ● Below list rotated with k = 3 (nodes 6 10 8 shifted back)
-○ If k = 1 ⇒ {10, 8, 15, 6}
-○ If k = 2 ⇒ {8, 15, 6, 10}*/
-void Left_Rotate(){
+    ○ If k = 1 ⇒ {10, 8, 15, 6}
+    ○ If k = 2 ⇒ {8, 15, 6, 10}*/
+void left_rotate(int k){
+
+k %= length;
+
+if(length == 0 || length == 1){
+    return;
+}
+
+Node<T> * cur = head;
+Node<T> * newHead = head->next;
+
+while (k > 0)
+{
+    tail->next = cur;
+    cur->next = nullptr;
+    tail = cur;
+    head = newHead;
+
+    cur = head;
+    newHead = head->next;
+    --k;
+}
 
 
 }
@@ -582,9 +604,36 @@ void Left_Rotate(){
 ● 1, 2, 1, 3, 2, 4, 3, 5, 2 ⇒ 1, 2, 3, 4, 5
 ● 1, 2, 3, 4, 5 ⇒ 1, 2, 3, 4, 5
 ● 1, 1, 1 ⇒ 1*/
-void Remove_duplicates(){
+void Remove_duplicates() {
+    if (length == 0 || length == 1) {
+        return;
+    }
 
+    std::vector<T> myVector;
+    myVector.push_back(head->value);
+    Node<T> *cur = head->next;
+    Node<T> *prev = head;
 
+    while (cur != nullptr) {
+        bool isDuplicate = false;
+
+        for (T element : myVector) {
+            if (element == cur->value) {
+                isDuplicate = true;
+                break;
+            }
+        }
+
+        if (!isDuplicate) {
+            myVector.push_back(cur->value);
+            prev = cur;
+        } else {
+            Node<T> *tmp = cur;
+            prev->next = cur->next;
+            cur = cur->next;
+            delete tmp;
+        }
+    }
 }
 
 /*Problem #16: Remove last occurance
