@@ -12,9 +12,12 @@ int main() {
 
   List->insert_sorted(1);
 	List->insert_sorted(2);
-	List->insert_sorted(30);
+	List->insert_sorted(2);
 	List->insert_sorted(7);
 	List->insert_sorted(7);
+	List->insert_sorted(1);
+	List->insert_sorted(7);
+	List->insert_sorted(3);
 
 	
 	List->print();

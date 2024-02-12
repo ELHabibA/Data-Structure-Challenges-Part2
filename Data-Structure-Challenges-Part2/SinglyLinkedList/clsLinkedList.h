@@ -609,13 +609,14 @@ void Remove_duplicates() {
         return;
     }
 
-    std::vector<T> myVector;
+    vector<T> myVector;
     myVector.push_back(head->value);
     Node<T> *cur = head->next;
     Node<T> *prev = head;
+    bool isDuplicate;
 
     while (cur != nullptr) {
-        bool isDuplicate = false;
+        isDuplicate = false;
 
         for (T element : myVector) {
             if (element == cur->value) {
@@ -627,6 +628,7 @@ void Remove_duplicates() {
         if (!isDuplicate) {
             myVector.push_back(cur->value);
             prev = cur;
+            cur = cur->next;
         } else {
             Node<T> *tmp = cur;
             prev->next = cur->next;
@@ -663,9 +665,9 @@ void Move_to_back(){
 /*Problem #18: Recursive max
 ● Given a list, we would like to find the max value in it
 ● Consider the following coding constraints
-○ You must use recursion
-○ Don’t create more than a function
-○ Function name: int max*/
+    ○ You must use recursion
+    ○ Don’t create more than a function
+    ○ Function name: int max*/
 
 void Recursive_max(){
 
