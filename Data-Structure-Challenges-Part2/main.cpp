@@ -13,25 +13,25 @@ int main() {
   List->insert_sorted(1);
 	List->insert_sorted(2);
 	List->insert_sorted(2);
-	List->insert_sorted(7);
-	List->insert_sorted(7);
-	List->insert_sorted(1);
-	List->insert_sorted(7);
+	List->insert_sorted(3);
+	List->insert_sorted(3);
+	List->insert_sorted(3);
+	List->insert_sorted(5);
 	List->insert_sorted(3);
 
 	
 	List->print();
 
-	//cout << List->get_Tail() << endl;
+	//List->Remove_duplicates();
 
-  List->Remove_duplicates();
+  List->Move_to_back(3);
    
 	List->print();
 
 	//cout << List->get_Head() << endl;
 
-//	cout << List->get_Tail() << endl;
-//	cout << List->get_Head() << endl;
+ cout << List->get_Tail() << endl;
+ cout << List->get_Head() << endl;
 
 	return 0;
 }

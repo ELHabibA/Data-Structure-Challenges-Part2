@@ -631,6 +631,10 @@ void Remove_duplicates() {
             cur = cur->next;
         } else {
             Node<T> *tmp = cur;
+            if(cur == tail)
+            {
+               tail = prev;
+            }
             prev->next = cur->next;
             cur = cur->next;
             delete tmp;
@@ -645,26 +649,43 @@ void Remove_duplicates() {
 ● 1, 2, 3, 1, 4 - key = 1 ⇒ 1, 2, 3, 4
 ● 1, 2, 3, 4 - key = 7 ⇒ 1, 2, 3, 4*/
 
-void Remove_last_occurance(T Value){
+void Remove_last_occurance(T key){
 
     if (length == 0 || length == 1) {
             return;
     }
 
-        vector<T> myVector;
-        myVector.push_back(head->value);
-        Node<T> *cur = head->next;
-        Node<T> *prev = head;
-        bool isDuplicate;
+        Node<T> *cur = head;
+        Node<T> *prev = nullptr;
+        bool doesExist = false;
 
         while (cur != nullptr)
         {
-            for (T element : myVector) {
-            if (element == Value && ) {
-                isDuplicate = true;
-                break;
-            }
-            }
+             if (cur->value == key && doesExist == false)
+             {
+                doesExist = true;
+                prev = cur;
+                cur = cur->next;
+             }
+
+             else if (cur->value == key && doesExist == true)
+             {
+                Node<T> *tmp = cur;
+                if(cur == tail)
+                {
+                tail = prev;
+                }
+                prev->next = cur->next;
+                cur = cur->next;
+                delete tmp;
+             }
+
+             else
+             {
+                prev = cur;
+                cur = cur->next;
+             } 
+             
         }
         
 
@@ -676,7 +697,48 @@ void Remove_last_occurance(T Value){
 ● 1, 2, 3, 2, 4, 1 - key = 1 ⇒ 2 3 2 4 1 1
 ● 1, 2, 3, 1, 2, 4, 1, 7, 1, 8, 1, 1 - key = 1 ⇒ 2 3 2 4 7 8 1 1 1 1 1 1*/
 
-void Move_to_back(){
+void Move_to_back(T key){
+
+     if (length == 0 || length == 1) {
+            return;
+     }
+
+     if (head->value == key)
+     {
+        tail->next = head;
+        tail = head;
+        head = head->next;
+        tail->next = nullptr;
+        
+     }
+     
+
+      Node<T> *cur = head->next;
+      Node<T> *prev = head;
+      Node<T> *curTail = tail;
+
+      while (cur != nullptr && cur != curTail)
+      {
+        if (key == cur->value)
+        {
+            prev->next = cur->next;
+            cur->next = nullptr;
+            tail->next = cur;
+            tail = cur;
+            
+            cur = prev->next;
+        }
+
+      else
+      {
+        prev = cur;
+        cur = cur->next;
+      }
+      
+        
+      }
+      
+     
 
 
 }
@@ -709,7 +771,7 @@ void Arrange_odd_and_even_nodes(){
 
 }
 
-/*Problem #2: Insert alternating
+/*Problem #20: Insert alternating
 ● Implement void insert_alternate(LinkedList &another)
 ● The function insert the values from another in an alternating way with self
 ● E.g. if list1 = 1, 2, 3 and list2 = 4,5,6⇒ 1 4 2 5 3 6
@@ -721,7 +783,7 @@ void insert_alternate(clsLinkedList<T> &another){
 
 }
 
-/*Problem #3: Adding 2 HUGE numbers
+/*Problem #21: Adding 2 HUGE numbers
 ● Assume we want to represent number 157 as linked list
 ○ It is helpful to have list as 7 -> 5 -> 1
 ○ This makes it easy to build and use in math operations
@@ -738,7 +800,7 @@ void Adding_Huge_Numbers(){
 
 }
 
-/*Problem #4: Remove all repeated
+/*Problem #22: Remove all repeated
 ● Given linked list of sorted integers, keep only nodes that never repeated and remove everything else (duplicate nodes)
 ● Input: 1, 1, 2, 2, 2, 3, 5 ⇒ {3, 5} both 1 and 2 are repeated
 ● Input: 1, 1 ⇒ {}
@@ -746,15 +808,15 @@ void Adding_Huge_Numbers(){
 ● Input: 1, 1, 2, 2, 2, 5 ⇒ {5}
 ● Input: 1, 2, 2, 2, 3 ⇒ {1, 3}
 ● Caution: Coding this problem may drain your time
-○ Think about several test cases
-○ Draw & verify!*/
+    ○ Think about several test cases
+    ○ Draw & verify!*/
 
 void Remove_all_repeated(){
 
 
 }
 
-/*Problem #5: Reverse Chains
+/*Problem #23: Reverse Chains
 ● Implement: void reverse_chains(int k)
 ● Instead of reversing the whole list, you reverse only each consecutive k nodes
 ● {1,2,3,4,5,6}, k = 6 ⇒ 6 5 4 3 2 1 [normal reverse]
