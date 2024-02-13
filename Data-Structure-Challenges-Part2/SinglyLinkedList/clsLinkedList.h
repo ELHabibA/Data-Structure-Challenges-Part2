@@ -645,8 +645,28 @@ void Remove_duplicates() {
 ● 1, 2, 3, 1, 4 - key = 1 ⇒ 1, 2, 3, 4
 ● 1, 2, 3, 4 - key = 7 ⇒ 1, 2, 3, 4*/
 
-void Remove_last_occurance(){
+void Remove_last_occurance(T Value){
 
+    if (length == 0 || length == 1) {
+            return;
+    }
+
+        vector<T> myVector;
+        myVector.push_back(head->value);
+        Node<T> *cur = head->next;
+        Node<T> *prev = head;
+        bool isDuplicate;
+
+        while (cur != nullptr)
+        {
+            for (T element : myVector) {
+            if (element == Value && ) {
+                isDuplicate = true;
+                break;
+            }
+            }
+        }
+        
 
 }
 
