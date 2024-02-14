@@ -24,7 +24,7 @@ int main() {
 
 	//List->Remove_duplicates();
 
-  List->Move_to_back(3);
+  List->Move_to_back(2);
    
 	List->print();
 
