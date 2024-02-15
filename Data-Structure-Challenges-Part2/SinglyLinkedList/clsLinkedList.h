@@ -751,7 +751,7 @@ void Move_to_back(T key){
     ○ Don’t create more than a function
     ○ Function name: int max*/
 
-void Recursive_max(){
+T max(){
 
 
 }
@@ -762,12 +762,46 @@ void Recursive_max(){
 ● Rearrange the nodes so that, odd nodes comes first and even nodes comes
 last
 ● E.g. if list is 10, 20, 3, 7, 15: Nodes (10, 3, 15) are at odd positions
-● 1, 2, 3, 4
-● 1, 2, 3
-● 1, 2, 3, 4, 5, 6, 7
+● 1, 2, 3, 4 ⇒ 1, 3, 2, 4
 ● 11 33 55 4 50 17 8 ⇒ 11 55 50 8 33 4 17*/
 
 void Arrange_odd_and_even_nodes(){
+
+    if (length == 0 || length == 1)
+    {
+        return;
+    }
+
+    Node<T> * even = head;
+    Node<T> * odd = head->next;
+    Node<T> * firstOdd = head->next;
+
+    while (odd != nullptr || even->next != nullptr)
+    {
+        if (odd->next == nullptr)
+        {
+            even->next = firstOdd;
+            tail = odd;
+            odd = odd->next;
+            break;
+        }
+
+        else if(odd->next->next == nullptr && odd->next != nullptr){
+            even->next = odd->next;
+            even->next->next = firstOdd;
+            odd->next = nullptr;
+            tail = odd;
+            break;
+        }
+        
+        even->next = odd->next;
+        odd->next = odd->next->next;
+        even = even->next;
+        odd = odd->next;
+    }
+    
+
+    
 
 }
 
