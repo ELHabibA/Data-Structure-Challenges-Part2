@@ -786,7 +786,7 @@ void Arrange_odd_and_even_nodes(){
             break;
         }
 
-        else if(odd->next->next == nullptr && odd->next != nullptr){
+        else if(odd->next->next == nullptr){
             even->next = odd->next;
             even->next->next = firstOdd;
             odd->next = nullptr;
@@ -813,14 +813,47 @@ void Arrange_odd_and_even_nodes(){
 ● {1, 2, 3} {4, 5, 6, 7, 8}⇒ 1 4 2 5 3 6, 7, 8
 ● {}, {1, 2, 3} ⇒ {1, 2, 3}*/
 
-void insert_alternate(clsLinkedList<T> &another){
+void insert_alternate(clsLinkedList<T>* &another){
+
+    if (length == 0 || another->get_Lengh() == 0)
+    {
+        return;
+    }
+    
+    Node<T> * current = head;
+    Node<T> *  pos = nullptr;
+    Node<T> * anotherCurrent = another->head;
+    Node<T> * anotherPos = nullptr;
+
+
+    while (current != nullptr && anotherCurrent != nullptr)
+    {
+
+        anotherPos = anotherCurrent->next;
+        anotherCurrent->next =  current->next;
+        pos = current->next;
+        current->next = anotherCurrent;
+
+        current = pos;
+        anotherCurrent = anotherPos;
+    }
+
+    
+    if (anotherCurrent != nullptr)
+    {
+        tail->next = anotherCurrent;
+        tail = another->tail;
+    }
+    
+    
+
 
 }
 
 /*Problem #21: Adding 2 HUGE numbers
 ● Assume we want to represent number 157 as linked list
-○ It is helpful to have list as 7 -> 5 -> 1
-○ This makes it easy to build and use in math operations
+    ○ It is helpful to have list as 7 -> 5 -> 1
+    ○ This makes it easy to build and use in math operations
 ● Implement method: void add_num(LinkedList &another)
 ● It adds another number to its current values
 ● Let’s say current list is {1, 2, 3} representing 321
@@ -829,7 +862,7 @@ void insert_alternate(clsLinkedList<T> &another){
 ● {9, 6, 5} + {8, 7, 6, 4, 5, 7, 8, 9} ⇒ {7, 4, 2, 5, 5, 7, 8, 9}
 ● Notice: numbers are huge. Don’t convert to integer*/
 
-void Adding_Huge_Numbers(){
+void add_num(clsLinkedList<T>* &another){
 
 
 }
@@ -847,7 +880,73 @@ void Adding_Huge_Numbers(){
 
 void Remove_all_repeated(){
 
+    if (length == 0 || length == 1)
+    {
+        return;
+    }
+    
+    Node<T> * current = nullptr;
+    Node<T> *  prev = nullptr;
+    Node<T> *  actual = head;
+    Node<T> * actualPrev = nullptr;
+    bool isRepeated = false;
 
+    while (actual->next != nullptr)
+    {
+        isRepeated = false;
+        current = actual->next;
+        prev = actual;
+
+        while (current != nullptr)
+        {
+           if (actual->value == current->value)
+           {
+              isRepeated = true;
+              Node<T> * tmp = current;
+
+              if (current == tail)
+              {
+                tail = prev;
+              }
+              
+              prev->next = current->next;
+              current = current->next;
+              delete tmp;
+           }
+
+           else{
+
+                prev = prev->next;
+                current = current->next;
+           }
+           
+        }
+
+        if (isRepeated)
+        {
+            if (head == actual)
+            {
+                actual = actual->next;
+                delete_first_node();
+            }
+
+            else
+            {
+                Node<T> * tmp = actual;
+                actualPrev->next = actual->next;
+                actual = actual->next;
+                delete tmp;
+            }
+            
+        }
+
+        else
+        {
+            actualPrev = actual;
+            actual = actual->next;
+        }
+           
+    }
 }
 
 /*Problem #23: Reverse Chains
