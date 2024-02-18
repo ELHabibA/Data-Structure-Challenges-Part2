@@ -751,8 +751,8 @@ void Move_to_back(T key){
     ○ Don’t create more than a function
     ○ Function name: int max*/
 
-T max(){
-
+int max(){
+   
 
 }
 
@@ -864,6 +864,84 @@ void insert_alternate(clsLinkedList<T>* &another){
 
 void add_num(clsLinkedList<T>* &another){
 
+    if (length == 0 || another->length == 0)
+    {
+        return;
+    }
+
+    Node<T> * current = head;
+    Node<T> * anotherCurrent = another->head;
+    Node<T> * prev = nullptr;
+    int reserve = 0;
+    int newValue = 0;
+    
+    while (current != nullptr && anotherCurrent != nullptr)
+    {
+        newValue =0;
+        newValue = current->value + anotherCurrent->value + reserve;
+        reserve = 0;
+
+        if (newValue > 10)
+        {
+            reserve = 1;
+            newValue = newValue -10; 
+        }
+        
+        current->value = newValue;
+
+        prev = current;
+        current = current->next;
+        anotherCurrent = anotherCurrent->next;
+    }
+
+    if (current == nullptr && anotherCurrent != nullptr)
+    {
+        prev->next = anotherCurrent;
+        tail = another->tail;
+
+        while (reserve > 0 && anotherCurrent != nullptr)
+        {
+            anotherCurrent->value += reserve;
+            reserve = 0;
+
+                if (anotherCurrent->value > 10)
+                {
+                    reserve = 1;
+                    anotherCurrent->value = anotherCurrent->value -10; 
+                }
+            
+            anotherCurrent = anotherCurrent->next;
+        }
+        
+    }
+    
+    
+    if (current != nullptr && anotherCurrent == nullptr)
+    {
+        while (reserve > 0 && current != nullptr)
+        {
+            current->value += reserve;
+            reserve = 0;
+
+                if (current->value > 10)
+                {
+                    reserve = 1;
+                    current->value = current->value -10; 
+                }
+            
+            current = current->next;
+        }
+    }
+    
+    if (current == nullptr && anotherCurrent == nullptr && reserve > 0)
+    {
+            Node<T> * new_Node = new Node<T>(reserve);
+            prev->next = new_Node;
+            new_Node->next = nullptr;
+            tail = new_Node;
+    }
+
+
 
 }
 
@@ -884,6 +962,7 @@ void Remove_all_repeated(){
     {
         return;
     }
+    
     
     Node<T> * current = nullptr;
     Node<T> *  prev = nullptr;
@@ -957,7 +1036,40 @@ void Remove_all_repeated(){
 ● {1,2,3,4,5,6, 7}, k = 2 ⇒ 2 1 4 3 6 5 7*/
 
 void reverse_chains(int k){
+    
+    if (length == 0 || length == 1)
+    {
+        return;
+    }
+    
+    if (k >= length)
+    {
+        reverse();
+    }
+    
+     Node<T> * current = head->next;
+     Node<T> * tmp = nullptr;
+     Node<T> * prev = head;
 
+     while (k > 1 && current != nullptr)
+     {
+        
+        tmp = current->next ;
+        current->next = prev;
+     
+        prev = current;
+        current = tmp;
+
+        --k;
+
+        if (k == 1)
+        {
+            head->next = current;
+            head = prev;
+        }
+        
+     }
+     
     
 }
 

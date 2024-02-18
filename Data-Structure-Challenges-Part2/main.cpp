@@ -10,32 +10,27 @@ int main() {
 	
 	clsLinkedList<int>* List = new clsLinkedList<int>();
 
-  List->insert_end(55);
-	List->insert_end(55);
-	List->insert_end(50);
-	List->insert_end(55);
-	List->insert_end(50);
-	List->insert_end(77);
-	List->insert_end(1);
-	List->insert_end(50);
-	List->insert_end(55);
+  List->insert_end(1);
+	List->insert_end(2);
+	List->insert_end(3);
+	
 	
 	
 	List->print();
 
 	/*clsLinkedList<int>* other = new clsLinkedList<int>();
 
-	other->insert_end(1);
-	other->insert_end(2);
-	other->insert_end(3);
 	other->insert_end(4);
+	other->insert_end(5);
+	other->insert_end(3);
+	
 	
 
 
 
-  other->print(); */
+  other->print();*/
 
- List->Remove_all_repeated();
+  List->reverse_chains(3);
    
 	List->print();
 
