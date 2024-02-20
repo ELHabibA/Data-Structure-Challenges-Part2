@@ -1045,6 +1045,7 @@ void reverse_chains(int k){
     if (k >= length)
     {
         reverse();
+        return;
     }
     
      Node<T> * current = head->next;

@@ -13,24 +13,19 @@ int main() {
   List->insert_end(1);
 	List->insert_end(2);
 	List->insert_end(3);
-	
+	List->insert_end(4);
 	
 	
 	List->print();
-
 	/*clsLinkedList<int>* other = new clsLinkedList<int>();
 
 	other->insert_end(4);
 	other->insert_end(5);
 	other->insert_end(3);
-	
-	
-
-
 
   other->print();*/
 
-  List->reverse_chains(3);
+  List->reverse_chains(9);
    
 	List->print();
 
