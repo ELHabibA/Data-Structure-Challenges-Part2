@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "clsNode.h"
+#include "Node.h"
 
 using namespace std;
 
@@ -303,16 +303,15 @@ Node<T>* get_nth_back(int n){
 /*Problem #7: Is Same list’s data?
 ● Develop function to check if lists
 are data-equal:
-○ Same length - each node and its
+    ○ Same length - each node and its
 corresponding one has same value
-○ bool is_same(const LinkedList
-&other)
+    ○ bool is_same(const LinkedList &other)
 ● Provide 2 codes
-○ One code assumes a variable
+    ○ One code assumes a variable
 length is maintained
 That tells us how many nodes so far
 ■ E.g. in each insert, length is increased
-○ Another that doesn’t use it and don’t compute length*/
+    ○ Another that doesn’t use it and don’t compute length*/
 
 bool is_same(const clsLinkedList &other){
 
@@ -536,8 +535,8 @@ void insert_sorted(T Value){
 
 /*Problem #13: Swap head and tail
 ● Given a list, we would like swap the head node with the tail now
-○ NODES swap (addresses) not just values swap
-○ See the before and after before. Observe the addresses
+    ○ NODES swap (addresses) not just values swap
+    ○ See the before and after before. Observe the addresses
 ● Tip: Draw step by step your procedure. This will save a lot of your time
 ● Make sure to print after the swap: once the values and also the addreses*/
 
@@ -711,7 +710,6 @@ void Move_to_back(T key){
         tail->next = nullptr;
         
      }
-     
 
       Node<T> *cur = head->next;
       Node<T> *prev = head;
@@ -735,12 +733,7 @@ void Move_to_back(T key){
         cur = cur->next;
       }
       
-        
-      }
-      
-     
-
-
+    }
 }
 
 
@@ -751,10 +744,18 @@ void Move_to_back(T key){
     ○ Don’t create more than a function
     ○ Function name: int max*/
 
-int max(){
-   
+int max(Node* head = nullptr, bool is_first_call = true) {		
+		
+		if (is_first_call)
+			return this->max(this->head, false);
 
-}
+		if (head == nullptr)
+			return INT_MIN;		// initial min value
+            
+		return std::max(head->data, this->max(head->next, false));
+	}
+};
+
 
 
 /*Problem #19: Arrange odd & even nodes

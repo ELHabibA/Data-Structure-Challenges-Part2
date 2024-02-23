@@ -1,20 +1,19 @@
 #include <iostream>
 #include "Vector/clsVector.h"
-#include "SinglyLinkedList/clsNode.h"
-#include "SinglyLinkedList/clsLinkedList.h"
+#include "DoublyLinkedList/clsNode.h"
+#include "DoublyLinkedList/clsDoublyLinkedList.h"
 
 using namespace std;
 
 int main() {
 
 	
-	clsLinkedList<int>* List = new clsLinkedList<int>();
+	clsDoublyLinkedList<int>* List = new clsDoublyLinkedList<int>();
 
   List->insert_end(1);
 	List->insert_end(2);
 	List->insert_end(3);
 	List->insert_end(4);
-	
 	
 	List->print();
 	/*clsLinkedList<int>* other = new clsLinkedList<int>();
@@ -25,14 +24,14 @@ int main() {
 
   other->print();*/
 
-  List->reverse_chains(9);
-   
-	List->print();
+	List->delete_node_with_key(3);
+	
 
-	//cout << List->get_Head() << endl;
+  List->print();
 
- cout << List->get_Tail() << endl;
- cout << List->get_Head() << endl;
+ cout << "Length: " << List->get_Length() << endl;
+ cout << "Head: " << List->get_head() << endl;
+ cout << "Tail: " << List->get_tail() << endl;
 
 	return 0;
 }
