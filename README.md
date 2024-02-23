@@ -1,6 +1,6 @@
 # Data Structure Challenges (Part2)
 
-The Data Structures Challenges Repository contains C++ solutions for various data structure challenges. Each challenge is encapsulated in its own class, providing a template for solving specific problems related to data structures. Each class is dedicated to constructing and implementing diverse data structures along with their associated operations. Additionally, it includes supplementary challenges aimed at deepening comprehension of data structure concepts and refining problem-solving skills.
+The Data Structures Challenges Repository contains C++ solutions for various data structure challenges. Each challenge is encapsulated in its class, providing a template for solving specific problems related to data structures. Each class is dedicated to constructing and implementing diverse data structures along with their associated operations. Additionally, it includes supplementary challenges aimed at deepening comprehension of data structure concepts and refining problem-solving skills.
 
 ## Challenges Included:
 
@@ -14,7 +14,7 @@ The Data Structures Challenges Repository contains C++ solutions for various dat
          - `pop(int idx)` - Removes an element at the specified index (idx) and returns its value.
          - `find_transposition(int value)` - Improves search speed by shifting the found value one step to the left, bringing frequently queried values closer to the beginning of the array.
 
-1. **Singly Linked List**
+2. **Singly Linked List**
     - Folder: `SinglyLinkedList`
     - Files: `clsLinkedList.h` & `clsNode.h`
     - Challenges:
@@ -61,6 +61,10 @@ The Data Structures Challenges Repository contains C++ solutions for various dat
         - `Remove_all_repeated()`: Removes all nodes with repeated values from the sorted linked list.
         - `reverse_chains(int k)`: Reverses each consecutive k nodes in the linked list.
 
+3. **Doubly Linked List**
+    - Folder: `DoublyLinkedList`
+    - Files: `clsDoublyLinkedList.h` & `clsNode.h`
+    - Challenges:
 
 ## Usage
 
