@@ -47,6 +47,12 @@ void print(){
 }
 
 
+
+
+
+
+
+
 /*Problem #1: Insert end
 ● Implemented insert_end function */
 
@@ -188,22 +194,33 @@ void delete_last_node(){
 ● remove given node, and connect its neighbors*/
 
 clsNode<T>* delete_and_link(clsNode<T>* cur) {
+         
+        if (cur == nullptr)
+        {
+            return nullptr;
+        }
         
         if (tail == cur)
         {
             delete_last_node();
+            return tail; 
         }
         if (head == cur)
         {
             delete_first_node();
+            return nullptr; 
         }
         
         
 		clsNode<T>* ret = cur->prev;
 		
         ret->next = cur->next;
-        cur->next->prev = ret;
-        
+
+        if (cur->next != nullptr)
+        {
+            cur->next->prev = ret;
+        }
+                
         --length;
 		return ret;
 }
@@ -226,7 +243,7 @@ void delete_node_with_key(T Value){
     
 	clsNode<T>* cur = head;
   
-    while (cur)
+    while (cur != nullptr)
     {
        if (cur->value == Value)
        {
@@ -235,12 +252,118 @@ void delete_node_with_key(T Value){
            if (cur->next == nullptr)
             {
                 tail = cur;
+                return;
             }
     
        }
        
               cur = cur->next;
     }
+
+}
+
+/*Problem #2: Delete even positions
+● Given a list, delete all nodes at even positions (2, 4, 6, etc)
+● E.g. {1, 2, 3, 4, 10} ⇒ {1, 3, 10}
+● E.g. {1, 2, 3, 4, 5, 6} ⇒ {1, 3, 5}
+● Note: positions NOT values
+● void delete_even_positions()*/
+
+void Delete_even_positions(){
+
+    if (length <= 1)
+    {
+        return;
+    }
+    
+    clsNode<T>* cur = head->next;
+
+    while (cur)
+    {
+        cur = delete_and_link(cur);
+        
+        if (cur->next == nullptr)
+        {
+           return;
+        }
+        
+        cur = cur->next->next;
+    }
+    
+}
+
+/*Problem #3: Delete odd positions
+● Given a list, delete all nodes at odd positions (1, 3, 5, etc)
+● E.g. {1, 2, 3, 4, 10} ⇒ {2, 4} 
+● E.g. {1, 2, 3, 4, 5, 7} ⇒ {2, 4, 7}
+● Note: positions NOT values
+● void delete_odd_positions()*/
+
+void Delete_odd_positions(){
+     
+    if (length == 0)
+    {
+        return;
+    }
+    if (length == 1)
+    {
+        delete_first_node();
+        return;
+    }
+    
+    
+    clsNode<T>* cur = head->next->next;
+
+    while (cur)
+    {
+        cur = delete_and_link(cur);
+        
+        if (cur->next == nullptr)
+        {
+           break;
+        }
+        
+        cur = cur->next->next;
+    }
+    
+    delete_first_node();
+
+}
+
+/*Problem #4: Is Palindrome
+● A palindrome number is read the same backward as forward (1221, 131, 0)
+● Implement: bool is_palindrome()
+● It returns true if the current linked list is palindrome
+● {1, 2, 2, 1} ⇒ True*/
+bool is_palindrome(){
+
+    if (length == 0)
+    {
+        return false;
+    }
+    if (length == 1)
+    {
+        return true;
+    }
+
+    clsNode<T>* cur = head;
+    clsNode<T>* rev = tail;
+    int count = length / 2;
+
+     while (count != 0)
+     {
+        if (cur->value != rev->value)
+        {
+            return false;
+        }
+        
+        cur = cur->next;
+        rev = rev->prev;
+        --count;
+     }
+     
+    
+    return true;
 
 }
 

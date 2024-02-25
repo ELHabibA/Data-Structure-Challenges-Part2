@@ -13,7 +13,13 @@ int main() {
   List->insert_end(1);
 	List->insert_end(2);
 	List->insert_end(3);
-	List->insert_end(4);
+	List->insert_end(9);
+	List->insert_end(3);
+	List->insert_end(2);
+	List->insert_end(1);
+  
+
+
 	
 	List->print();
 	/*clsLinkedList<int>* other = new clsLinkedList<int>();
@@ -24,8 +30,18 @@ int main() {
 
   other->print();*/
 
-	List->delete_node_with_key(3);
+  if (List->is_palindrome())
+	{
+		cout << " YES !!"<<endl;
+	}
+
+	else
+	{
+	cout << " NO !!"<<endl;
+
+	}
 	
+		
 
   List->print();
 
