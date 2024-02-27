@@ -10,37 +10,27 @@ int main() {
 	
 	clsDoublyLinkedList<int>* List = new clsDoublyLinkedList<int>();
 
-  List->insert_end(1);
-	List->insert_end(2);
-	List->insert_end(3);
-	List->insert_end(9);
-	List->insert_end(3);
-	List->insert_end(2);
-	List->insert_end(1);
-  
-
-
+  List->insert_end(10);
+	List->insert_end(20);
+	List->insert_end(30);
+	List->insert_end(40);
+	List->insert_end(50);
 	
 	List->print();
-	/*clsLinkedList<int>* other = new clsLinkedList<int>();
 
-	other->insert_end(4);
-	other->insert_end(5);
-	other->insert_end(3);
+	clsDoublyLinkedList<int>* other = new clsDoublyLinkedList<int>();
 
-  other->print();*/
+	other->insert_end(15);
+	other->insert_end(17);
+	other->insert_end(22);
+	other->insert_end(24);
+	other->insert_end(60);
 
-  if (List->is_palindrome())
-	{
-		cout << " YES !!"<<endl;
-	}
+  other->print();
 
-	else
-	{
-	cout << " NO !!"<<endl;
+ 
 
-	}
-	
+	List->merge_2sorted_lists(other);
 		
 
   List->print();
