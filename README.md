@@ -16,7 +16,7 @@ The Data Structures Challenges Repository contains C++ solutions for various dat
 
 2. **Singly Linked List**
     - Folder: `SinglyLinkedList`
-    - Files: `clsLinkedList.h` & `clsNode.h`
+    - Files: `clsLinkedList.h` & `Node.h`
     - Challenges:
       
         **Basic Operations**
@@ -65,6 +65,27 @@ The Data Structures Challenges Repository contains C++ solutions for various dat
     - Folder: `DoublyLinkedList`
     - Files: `clsDoublyLinkedList.h` & `clsNode.h`
     - Challenges:
+
+        **Basic Operations**
+        - `get_Length()`: Returns the length of the linked list.
+        - `get_Head()`: Returns the value of the head node.
+        - `get_Tail()`: Returns the value of the tail node.
+        - `print()`: Prints the values of all nodes in the linked list.
+        - `delete_first_node()`: Deletes the first node in the linked list.
+        - `delete_last_node()`: Deletes the last node in the linked list.
+        - `delete_nth(int n)`: Deletes the node at the specified position in the linked list.
+        - `insert_end(T Value)`: Inserts a new node with the given value at the end of the linked list.
+        
+        **Advanced Operations**
+        - `merge_sorted(clsDoublyLinkedList* other)`: Merges two sorted linked lists while maintaining the sorted order.
+        - `split_half(clsDoublyLinkedList* &secondHalf)`: Splits the linked list into two halves and stores the second half in the provided list.
+        - `remove_duplicates()`: Removes duplicate nodes from the linked list.
+        
+        **Additional Functionality**
+        - `is_palindrome()`: Checks if the linked list is a palindrome.
+        - `find_middle()`: Finds the middle value(s) of the linked list.
+        - `swap_nodes(int pos1, int pos2)`: Swaps the nodes at the specified positions in the linked list.
+        - `reverse()`: Reverses the order of nodes in the linked list.
 
 ## Usage
 
